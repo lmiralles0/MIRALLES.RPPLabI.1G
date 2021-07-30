@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1626462618 source:c:\users\luciano miralles\desktop\programacion\codebloks-workspace\recprimerparciallab\bibliotecas_get.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"bibliotecas_Get.h"
+
+1624602364 c:\users\luciano miralles\desktop\programacion\codebloks-workspace\recprimerparciallab\bibliotecas_get.h
+
+1627607069 source:c:\users\luciano miralles\desktop\programacion\codebloks-workspace\recprimerparciallab\lib.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lib.h"
+	"bibliotecas_Get.h"
+
+1627607043 c:\users\luciano miralles\desktop\programacion\codebloks-workspace\recprimerparciallab\lib.h
+
+1627606694 source:c:\users\luciano miralles\desktop\programacion\codebloks-workspace\recprimerparciallab\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"bibliotecas_Get.h"
+	"lib.h"
+
