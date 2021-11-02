@@ -1,105 +1,102 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "paciente.h"
+#include "data_WareHouse.h"
 #include "bibliotecas_Get.h"
-#include "lib.h"
-#define SIZE 100
-
-
+#include "inoculacion.h"
+#include "informes.h"
+#include "condicion.h"
 
 int main()
 {
-    eCliente lista[SIZE];
-    eAlquiler lista2[SIZE];
-    int idCliente = 1000;
-    int idAlquier = 9000;
-    int opcion;
-    int opcion2;
-    int opcionModificar;
+    ePaciente list[1000];
+    eInoculacion array[1000];
     int flagInicio = 0;
-    int flagListaCliente = 0;
-    int flagListaAlquiler = 0;
-    eEquipos aux[3] = {
-    {1, "AMOLADORA"},
-    {2, "MEZCLADORA"},
-    {3, "TALADRO"},
-    };
-
+    int flagListarPacientes = 0;
+    int flagListarInoculacion = 0;
+    char opcion;
+    int idInoculacion = 100;
+    int idPaciente = 0;
+    int opcion2;
+    int opcionInformes;
 
     do
     {
         if(flagInicio == 0)
         {
-            inicializarAlquiler(lista2, SIZE);
-            inicializarCliente(lista, SIZE);
+            inicializarInoculacion(array, 1000);
+            inicializarPaciente(list, 1000);
             flagInicio = 1;
         }
-
-        printf("  ***ABM MAQUINARIA*** \n\n");
-        printf("1) Alta Cliente.\n");
-        printf("2) Modificar datos Cliente.\n");
-        printf("3) Baja Cliente.\n");
-        printf("4) Alta alquiler.\n");
-        printf("5) Fin Alquiler.\n");
-        printf("6) Informes.\n");
-        printf("10) Salir.\n\n");
-
-        while(get_EntradaInt(&opcion, "Ingrese opcion del menu.\n", "Error al ingresar opcion.\n", 10, 1, 3) != 0)
-        {
-            get_EntradaInt(&opcion, "Ingrese opcion del menu\n", "Error al ingresar opcion.\n", 10, 1, 1);
-        }
+        printf("A. ALTA PACIENTE.\n");
+        printf("B. MODIFICAR PACIENTE.\n");
+        printf("C. BAJA PACIENTE.\n");
+        printf("D. LISTAR PACIENTES.\n");
+        printf("E. LISTAR PROVINCIAS.\n");
+        printf("F. LISTAR LABORATORIOS.\n");
+        printf("G. LISTAR VACUNAS.\n");
+        printf("H. ALTA INOCULACION.\n");
+        printf("I. LISTAR INOCULACIONES.\n");
+        printf("J. INFORMES.\n");
+        printf("Z. SALIR.\n\n");
+        printf("Ingrese una opcion del menu: \n");
+        scanf("%c", &opcion);
+        fflush(stdin);
+        system("cls");
         switch(opcion)
         {
-        case 1:
+        case 'A':
             system("cls");
-            if(altaCliente(lista, SIZE, &idCliente) == 0)
+            if(altaPaciente(list, 1000, &idPaciente, provincias, 5, condiciones, 4) == 0)
             {
-                printf("\nAlta existosa.\n");
+                printf("Alta existosa.\n");
                 system("pause");
                 system("cls");
-                flagListaCliente = 1;
+                flagListarPacientes = 1;
             }
             else
             {
-                printf("Error al cargar Cliente.\n");
-                system("pause");
+                printf("Error al cargar Paciente.\n");
+                system("pasue");
                 system("cls");
+
             }
             break;
-        case 2:
+        case 'B':
             system("cls");
-            if(flagListaCliente == 1)
+            if(flagListarPacientes == 1)
             {
-                mostrarClientes(lista, SIZE);
+                mostrarPacientes(list, 1000, provincias, 5, condiciones, 4);
                 printf("\n");
-                printf("1) Modificar Nombre.\n");
-                printf("2) Modificar Apellido.\n");
-                if(get_EntradaInt(&opcionModificar, "Ingrese opcion del menu.\n", "Erorr.\n", 2, 1, 5) == 0)
+                printf("1) Modificar provincia.\n");
+                printf("2) Modificar riesgo.\n");
+                printf("3)Modificar condicion.\n");
+                if(get_EntradaInt(&opcion2, "Ingrese la opcion a modificar.\n", "Error\n", 3, 1, 5) == 0)
                 {
-                    modificarCLiente(lista, SIZE, opcionModificar);
-                    printf("Modificacion exitosa.\n");
+                    modificarPaciente(list, 1000, opcion2, provincias, 5, condiciones, 4);
                     system("pause");
                     system("cls");
                 }
                 else
                 {
-                    printf("Error al seleccionar una opcion a modificar.\n");
+                    printf("Error al modificar pacientes.\n");
                     system("pause");
                     system("cls");
                 }
             }
             else
             {
-                printf("Error, no se han cargado clientes.\n");
+                printf("Error no se han cargado pacientes.\n");
                 system("pause");
                 system("cls");
             }
             break;
-        case 3:
+        case 'C':
             system("cls");
-            if(flagListaCliente == 1)
+            if(flagListarPacientes == 1)
             {
-                if(bajaCliente(lista, SIZE) == 0)
+                if(bajaPaciente(list, 1000, provincias, 5, condiciones, 4) == 0)
                 {
                     printf("Baja exitosa.\n");
                     system("pause");
@@ -107,130 +104,186 @@ int main()
                 }
                 else
                 {
-                    printf("Error al dar de baja Cliente.\n");
+                    printf("Error al dar de baja Paciente.\n");
                     system("pause");
                     system("cls");
                 }
             }
             else
             {
-                printf("Error, no se han cargado clientes.\n");
+                printf("Error no se han cargado pacientes.\n");
                 system("pause");
                 system("cls");
             }
             break;
-        case 4:
+        case 'D':
             system("cls");
-            if(flagListaCliente == 1)
+            if(flagListarPacientes == 1)
             {
-                if(altaAlquiler(lista2, SIZE, &idAlquier, lista, SIZE) == 0)
+                listarPaciente(list, 1000, provincias, 5,condiciones, 4);
+                system("pause");
+                system("cls");
+            }
+            else
+            {
+                printf("Error no se han cargado Pacientes.\n");
+                system("pause");
+                system("cls");
+            }
+            break;
+        case 'E':
+            system("cls");
+            mostrarProvincias(provincias, 5);
+            printf("\n");
+            system("pause");
+            system("cls");
+            break;
+        case 'F':
+            system("cls");
+            mostrarLaboratorios(laboratorios, 4);
+            printf("\n");
+            system("pause");
+            system("cls");
+            break;
+        case 'G':
+            system("cls");
+            mostrarVacunas(vacunas, 6);
+            system("pause");
+            system("cls");
+            break;
+        case 'H':
+            system("cls");
+            if(flagListarPacientes == 1)
+            {
+                if(altaInoculacion(array, 1000, &idInoculacion, list, 1000, vacunas, 6, provincias, 5, condiciones, 4) == 0)
                 {
-                    printf("\nAlta existosa.\n");
+                    printf("Inoculacion cargada con exito.\n");
+                    flagListarInoculacion = 1;
                     system("pause");
                     system("cls");
-                    flagListaAlquiler = 1;
                 }
                 else
                 {
-                    printf("Error al cargar Alquiler.\n");
+                    printf("Error al cargar Inoculacion.\n");
                     system("pause");
                     system("cls");
                 }
             }
             else
             {
-                printf("Error, no se han cargado clientes.\n");
+                printf("Error no se han cargado pacientes.\n");
                 system("pause");
                 system("cls");
             }
             break;
-        case 5:
+        case 'I':
             system("cls");
-            if(flagListaAlquiler == 1 && flagListaCliente == 1)
+            if(flagListarInoculacion == 1)
             {
-                if(bajaAlquiler(lista2, SIZE, lista, SIZE, aux, 3) == 0)
-                {
-                    printf("Alquiler finalizado.\n");
-                }
-                else
-                {
-                    printf("Error al dar de baja alquiler.\n");
-                    system("pause");
-                    system("cls");
-                }
+                mostrarInoculaciones(array, 1000, list, 1000, vacunas, 6);
+                system("pause");
+                system("cls");
             }
             else
             {
-                printf("Error, no se han cargado clientes ni alquileres.\n");
+                printf("No se han cargado Inoculaciones.\n");
                 system("pause");
                 system("cls");
             }
             break;
-        case 6:
+        case 'J':
             system("cls");
-            if(flagListaAlquiler == 1 && flagListaCliente == 1)
+            printf("1-Mostrar vacunas de un laboratorio seleccionado por el usuario.\n");
+            printf("2-Pedir un grupo de riego y una provincia y mostrar los pacientes de ese grupo de riesgo y esa provincia.\n");
+            printf("3-Informar el porcentaje de paciente que pertenecen al grupo de riesgo sobre el total.\n");
+            printf("4-Mostrar un listado de los pacientes separados por provincia.\n");
+            printf("5-Informar cual o cuales son las vacunas más inoculadas.\n");
+            printf("6-Mostrar la vacuna que se ha inoculado menor cantidad de veces.\n");
+            if(get_EntradaInt(&opcionInformes, "Ingrese el numero de informe.\n", "Error al ingresar informe.\n", 10, 1, 5) == 0)
             {
-                printf("Informes:\n");
-                printf("\t1- El nombre y apellido del asociado con más alquileres.\n");
-                printf("\t2- El o los equipo/s más alquilado/s y su cantidad.\n");
-                printf("\t3- El tiempo promedio real de alquiler de los equipos.\n");
-                printf("\t4- Todos los clientes con sus alquileres.\n");
-                while(get_EntradaInt(&opcion2, "Ingrese opcion del menu.\n", "Error al ingresar opcion.\n", 4, 1, 3) != 0)
-                {
-                    get_EntradaInt(&opcion2, "Ingrese opcion del menu\n", "Error al ingresar opcion.\n", 4, 1, 1);
-                }
-                switch(opcion2)
+                switch(opcionInformes)
                 {
                 case 1:
+                    system("cls");
+                    mostrarVacunaPorLaboratorio(vacunas, 6, laboratorios, 4);
+                    system("pause");
                     system("cls");
                     break;
                 case 2:
                     system("cls");
-                    if(equiposMasAlquilados(aux, 3, lista2, SIZE) == 0)
-                    {
-                        system("pause");
-                        system("cls");
-                    }
+                    mostrarPacientePorRiesgoProvincia(list, 1000, provincias, 5, condiciones, 4);
+                    system("pause");
+                    system("cls");
                     break;
                 case 3:
                     system("cls");
-                    printf("El promedio de los alquileres real es de: %0.2f\n", promedioAlquileresTiempo(lista2, SIZE));
+                    mostrarPorcentajePacienteRiesgo(list, 1000);
                     system("pause");
                     system("cls");
                     break;
                 case 4:
                     system("cls");
-                    if(clienteYAlquileres(lista, lista2, SIZE, SIZE, aux, 3) == 0)
+                    if(flagListarPacientes == 1)
                     {
+                        mostrarPacientesPorProvincias(list, 1000, provincias, 5, condiciones, 4);
                         system("pause");
                         system("cls");
                     }
                     else
                     {
+                        printf("Error no se han cargado Pacientes.\n");
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                case 5:
+                    system("cls");
+                    if(flagListarInoculacion == 1)
+                    {
+                        mostrarVacunasMasInoculadas(array, 1000, vacunas, 6);
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        printf("No se han cargado Inoculaciones.\n");
+                        system("pause");
+                        system("cls");
+                    }
+                    break;
+                case 6:
+                    system("cls");
+                    if(flagListarInoculacion == 1)
+                    {
+                        mostrarVacunasMenosInoculadas(array, 1000, vacunas, 6);
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        printf("No se han cargado Inoculaciones.\n");
                         system("pause");
                         system("cls");
                     }
                     break;
                 }
+
             }
-            else
-            {
-                printf("Aun no cargo cliente y alquiler.\n");
-                system("pause");
-                system("cls");
-            }
+
             break;
-        case 10:
+        case 'Z':
+            printf("  ");
             break;
-        default:
-            system("cls");
+        default :
+            printf("Ingreso una opcion invalida.\n");
             system("pause");
-            printf("Ingreso una opcion incorrecta.\n");
+            system("cls");
             break;
         }
-    }
-    while(opcion != 10);
 
+
+    }
+    while(opcion != 'Z');
 
     return 0;
 }

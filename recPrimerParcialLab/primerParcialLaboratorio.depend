@@ -1,0 +1,92 @@
+# depslib dependency file v1.0
+1635198499 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\bibliotecas_get.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"bibliotecas_Get.h"
+
+1635198535 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\bibliotecas_get.h
+
+1635814417 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"paciente.h"
+	"data_WareHouse.h"
+	"bibliotecas_Get.h"
+	"inoculacion.h"
+	"informes.h"
+	"condicion.h"
+
+1635813744 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\inoculacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"inoculacion.h"
+
+1635302766 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\laboratorio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"laboratorio.h"
+
+1635207652 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\provincia.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"provincia.h"
+
+1635307410 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\vacuna.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"vacuna.h"
+
+1635205834 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\provincia.h
+
+1635814406 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\paciente.h
+	"provincia.h"
+	"condicion.h"
+	"bibliotecas_Get.h"
+
+1635812872 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\data_warehouse.h
+	"laboratorio.h"
+	"provincia.h"
+	"vacuna.h"
+	"condicion.h"
+
+1635207938 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\laboratorio.h
+
+1635208374 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\vacuna.h
+
+1635814447 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\paciente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"paciente.h"
+	"provincia.h"
+
+1635813699 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\inoculacion.h
+	"paciente.h"
+	"vacuna.h"
+	"bibliotecas_Get.h"
+
+1635813819 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\informes.h
+	"paciente.h"
+	"inoculacion.h"
+	"laboratorio.h"
+
+1635813904 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"informes.h"
+
+1635813026 c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\condicion.h
+
+1635813019 source:c:\users\luciano miralles\desktop\estructura\primerparciallaboratorio\condicion.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"condicion.h"
+
